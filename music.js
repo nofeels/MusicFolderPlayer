@@ -1141,6 +1141,7 @@ function keyNav(el, direction) {
 document.addEventListener('keydown', function(e) {
 	if (e.altKey || e.ctrlKey) return;
 	var el = document.activeElement;
+	volume = audio[current].volume.toFixed(2)*1;
 
 	if (e.which == 27) {	// esc
 		e.preventDefault();
@@ -1156,6 +1157,14 @@ document.addEventListener('keydown', function(e) {
 	if (el.tagName.toLowerCase() == 'input') return;
 
 	switch (e.keyCode) {
+		case 107:	// +
+			if(volume<=1) audio[current].volume = volume + 0.05;
+			else audio[current].volume = 1;
+			break;
+		case 109:	// -
+			if(volume>=0.05) audio[current].volume = volume - 0.05;
+			else audio[current].volume = 0.05;
+			break;
 		case 90:	// z
 			zoom();
 			break;
