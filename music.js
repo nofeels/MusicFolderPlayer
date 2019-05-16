@@ -611,6 +611,20 @@ function nextBtn() {
 	if (!cfg.locked) next();
 }
 
+var volume = 0.05;
+
+function vdnBtn() {
+	volume = audio[current].volume.toFixed(2)*1;
+	if(volume>=0.05) audio[current].volume = volume - 0.05;
+	else audio[current].volume = 0.05;
+}
+
+function vupBtn() {
+	volume = audio[current].volume.toFixed(2)*1;
+	if(volume<=1) audio[current].volume = volume + 0.05;
+	else audio[current].volume = 1;
+}
+
 function next() {
 	if (cfg.playlist.length > cfg.index + 1) {
 		if (cfg.random && !cfg.playlist[cfg.index + 1].playNext) {
